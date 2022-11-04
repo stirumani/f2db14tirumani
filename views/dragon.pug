@@ -1,0 +1,21 @@
+extends layout
+block content
+
+  h1= title
+    -let drag   =[{dragonname:"Drogon",state :"United states",feature:'drogon is a cross-platform framework',ranking :1},{dragonname:"Rhaegal",state :"United kingdom",feature:'green colored scales and red-greed wings',ranking: 2},{dragonname:"Viserion",feature:'viserion is a cross-platform framework',ranking:3}]
+  div(class="container-fluid")
+  div(class="row")
+
+    each dragon ,index in drag 
+            table(style='width:100%')
+                tr
+                    div(class="col-sm-2" onclick=`buy(${index})`) #{dragon.dragonname}
+                    div(class="col-sm-2" onclick=`buy(${index})`) #{dragon.feature}
+                    div(class="col-sm-2" onclick=`buy(${index})`) #{dragon.ranking}
+
+    script.
+     
+      function buy(itemNo)
+      {
+        alert(`Places to visit ${itemNo+1}`)
+      }
