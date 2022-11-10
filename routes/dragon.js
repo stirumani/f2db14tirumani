@@ -1,10 +1,7 @@
-var express = require('express');
-var router = express.Router();
-
-/* GET home page. */
-
-router.get('/', function (req, res, next) {
-    res.render('dragon',{title:'Sarch Results dragon'});
-});
-
-module.exports = router;
+var express = require('express'); 
+const dragon_controlers= require('../controllers/dragon'); 
+var router = express.Router(); 
+ 
+/* GET dragons */ 
+router.get('/', dragon_controlers.dragon_view_all_Page ); 
+module.exports = router; 
