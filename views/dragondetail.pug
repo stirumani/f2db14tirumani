@@ -1,0 +1,23 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let dragonid = toShow._id 
+  - let dragonname = toShow.dragonname 
+  - let dragonfeature = toShow.feature 
+  - let dragonranking = toShow.ranking 
+  div 
+    div.row 
+      div(class='dragonAttr mr-3') dragon ID is: 
+      div #{dragonid} 
+    div.row 
+      div(class='dragonAttr mr-3') dragon Name is: 
+      div #{dragonname} 
+    div.row 
+      div(class='dragonAttr mr-3') dragon Feature  is: 
+      div #{dragonfeature} 
+    div.row 
+      div(class='dragonAttr mr-3') dragon Ranking is: 
+      div #{dragonranking}
+

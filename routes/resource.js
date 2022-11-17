@@ -28,3 +28,12 @@ router.get('/dragons/:id', dragon_controller.dragon_detail);
 router.get('/dragons', dragon_controller.dragon_list); 
  
 module.exports = router; 
+/* GET detail dragon page */ 
+router.get('/detail', dragon_controller.dragon_view_one_Page); 
+/* GET create dragon page */
+router.get('/create', dragon_controller.dragon_create_Page);
+/* GET create update page */ 
+router.get('/update', dragon_controller.dragon_update_Page);
+/* GET delete dragon page */ 
+router.get('/delete', dragon_controller.dragon_delete_Page); 
+ 
