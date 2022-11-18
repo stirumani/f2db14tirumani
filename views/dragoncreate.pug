@@ -6,14 +6,14 @@ block content
   form(id='DragonForm', action="/resource/dragons", method="POST") 
     div.form-group 
         label.dragonAttr(for='dragonname') Dragon name 
-        input#dragonname(type='text', name='dragonname') 
+        input#dragonname(type='text',class="form-control", name='dragonname') 
     div.form-group 
         label.dragonAttr(for='feature') Dragon feature
-        input#feature(type='text', name='feature') 
+        input#feature(type='text',class="form-control", name='feature') 
     div.form-group 
         label.dragonAttr(for='ranking') Dragon ranking
-        input#ranking(type='number', name='ranking') 
-    input(type="submit") 
+        input#ranking(type='number',class="form-control", name='ranking') 
+    input(type="submit" class="btn btn-danger m-2") 
  
   script. 
     document.forms['DragonForm'].addEventListener('submit', (event) => { 

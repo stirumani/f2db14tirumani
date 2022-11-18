@@ -1,19 +1,16 @@
 extends layout
+
 block content
-
   h1= title
-  div(class="container-fluid")
-  div(class="row")
-    each dragon ,index in results 
-            table(style='width:100%')
-                tr
-                    div(class="col-sm-2" onclick=`buy(${index})`) #{dragon.dragonname}
-                    div(class="col-sm-2" onclick=`buy(${index})`) #{dragon.feature}
-                    div(class="col-sm-2" onclick=`buy(${index})`) #{dragon.ranking}
-
-    script.
-     
-      function buy(itemNo)
-      {
-        alert(`Places to visit ${itemNo+1}`)
-      }
+  - var results = results
+  div(class="container-fluid") 
+    div(class="row m-1") 
+      each item in results  
+        - let destination = `dispatch(\"/resource/update?id=${item._id}\")` 
+        div(class="row-sm-2", class="m-1") Item #{item.dragonname}(#{item.feature}) is #{item.ranking} 
+          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+   
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    }

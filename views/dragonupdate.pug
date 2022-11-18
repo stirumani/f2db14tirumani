@@ -2,43 +2,46 @@ extends layout
  
 block content 
   h1= title 
- 
-  - let dragonid = toShow._id 
-  - let dragonname = toShow.dragonname 
-  - let dragonfeature = toShow.feature
-  - let dragonranking = toShow.ranking
+  if (toShow == null) 
+    h2 No instance to update 
+  else 
+  
+    - let dragonid = toShow._id 
+    - let dragonname = toShow.dragonname 
+    - let dragonfeature = toShow.feature
+    - let dragonranking = toShow.ranking
    
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{dragonid} 
-  - let actionid = "/resource/dragons/" + dragonid 
-  form(id='DragonForm', action= actionid, method="PUT") 
+    div.row(class='mb-2') 
+      div.mr-1 ID is 
+      div #{dragonid} 
+    - let actionid = "/resource/dragons/" + dragonid 
+    form(id='DragonForm', action= actionid, method="PUT") 
     div.form-group 
-        label.dragonAttr(for='dragonname') Dragon name  
-        input#dragonname(type='text', name='dragonname', value= dragonname ) 
+      label.dragonAttr(for='dragonname') Dragon name  
+      input#dragonname(type='text', name='dragonname', value= dragonname ) 
     div.form-group 
-        label.dragonAttr(for='feature') Dragon feature 
-        input#feature(type='text', name='feature', value= dragonfeature ) 
+      label.dragonAttr(for='feature') Dragon feature 
+      input#feature(type='text', name='feature', value= dragonfeature ) 
     div.form-group 
-        label.dragonAttr(for='ranking') Dragon ranking
-        input#ranking(type='number', name='ranking', value= dragonranking ) 
+      label.dragonAttr(for='ranking') Dragon ranking
+      input#ranking(type='number', name='ranking', value= dragonranking ) 
     input(type="submit") 
  
   script. 
     document.forms['DragonForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
-      // TODO do something here to show user that form is being submitted 
-      fetch(event.target.action, { 
-        method: 'PUT', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-      }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
-      }).then((body) => { 
-        alert("Update succeded") 
-        // TODO handle body 
-      }).catch((error) => { 
-        // TODO handle error 
-        alert("Update failed " + error ) 
-      }); 
+    event.preventDefault(); 
+    // TODO do something here to show user that form is being submitted 
+    fetch(event.target.action, { 
+      method: 'PUT', 
+      body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+    }).then((resp) => { 
+      return resp.json(); // or resp.text() or whatever the server sends 
+    }).then((body) => { 
+      alert("Update succeded") 
+    // TODO handle body 
+    }).catch((error) => { 
+    // TODO handle error 
+      alert("Update failed " + error ) 
+    }); 
     }); 
  
