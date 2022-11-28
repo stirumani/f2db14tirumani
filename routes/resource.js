@@ -40,9 +40,10 @@ module.exports = router;
 /* GET detail dragon page */ 
 router.get('/detail', dragon_controller.dragon_view_one_Page); 
 /* GET create dragon page */
-router.get('/create', dragon_controller.dragon_create_Page);
+router.get('/create',secured, dragon_controller.dragon_create_Page);
+
 /* GET create update page */ 
 router.get('/update',secured, dragon_controller.dragon_update_Page);
 /* GET delete dragon page */ 
-router.get('/delete', dragon_controller.dragon_delete_Page); 
+router.get('/delete', secured,dragon_controller.dragon_delete_Page); 
  
